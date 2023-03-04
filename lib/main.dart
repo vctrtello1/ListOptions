@@ -4,6 +4,7 @@ import './answer.dart';
 
 void main() => runApp(MyApp());
 
+// ignore: use_key_in_widget_constructors
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -12,52 +13,50 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  static const questions = [
+    {
+      'questionText': 'What is your favorite color?',
+      'answers': [
+        'Black',
+        'Red',
+        'Green',
+        'White',
+      ]
+    },
+    {
+      'questionText': 'What is your favorite animal?',
+      'answers': [
+        'Dog',
+        'Cat',
+        'Wolf',
+        'White',
+      ]
+    },
+    {
+      'questionText': 'What is your favorite food?',
+      'answers': [
+        'Pizza',
+        'Hamburger',
+        'Pasta Alfredo',
+        'Lasagna',
+      ]
+    },
+  ];
   var _questionIndex = 0;
 
   void _answerQuestion() {
+    if (_questionIndex < questions.length) {}
     setState(() {
       _questionIndex++;
     });
-    print('Answer choosen');
-
-    print(_questionIndex);
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      {
-        'questionText': 'What is your favorite color?',
-        'answers': [
-          'Black',
-          'Red',
-          'Green',
-          'White',
-        ]
-      },
-      {
-        'questionText': 'What is your favorite animal?',
-        'answers': [
-          'Dog',
-          'Cat',
-          'Wolf',
-          'White',
-        ]
-      },
-      {
-        'questionText': 'What is your favorite food?',
-        'answers': [
-          'Pizza',
-          'Hamburger',
-          'Pasta Alfredo',
-          'Lasagna',
-        ]
-      },
-    ];
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: Text('My first app'),
+            title: const Text('My first app'),
           ),
           body: Column(
             children: [
