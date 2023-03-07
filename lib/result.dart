@@ -1,16 +1,17 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
-
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   final int resultScore;
-  Result(this.resultScore);
+  final Function resetHandler;
+  Result(this.resultScore, this.resetHandler);
 
   String get resultPhrase {
-    var resultText = 'You did it!';
+    String resultText = 'You did it!';
 
     if (resultScore == 58) {
       resultText = 'Welcome';
+    } else if (resultScore == 37) {
+      resultText = 'Welcome and bye!';
     }
     return resultText;
   }
@@ -18,8 +19,16 @@ class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(resultPhrase,
-          style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+      child: Column(
+        children: [
+          Text(
+            resultPhrase,
+            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          TextButton(onPressed: resetHandler(), child: Text('Restart Quiz!'))
+        ],
+      ),
     );
   }
 }
