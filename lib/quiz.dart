@@ -7,7 +7,7 @@ class Quiz extends StatelessWidget {
   final int questionIndex;
   final Function answerQuestion;
 
-  Quiz({
+  const Quiz({super.key, 
     required this.questions,
     required this.answerQuestion,
     required this.questionIndex,
